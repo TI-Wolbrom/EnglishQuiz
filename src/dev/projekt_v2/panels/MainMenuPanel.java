@@ -12,10 +12,12 @@ import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 import dev.projekt_v2.core.ApplicationFrame;
+import dev.projekt_v2.core.OptionsDialog;
 
 public class MainMenuPanel extends JPanel {
 
 	private ApplicationFrame parent;
+	private OptionsDialog optionsDialog;
 	
 	private JButton btnStart;
 	private JButton btnAuthors;
@@ -41,6 +43,11 @@ public class MainMenuPanel extends JPanel {
 		});
 		
 		btnOptions = createButton("Ustawienia", 400);
+		btnOptions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				optionsDialog = new OptionsDialog(parent);
+			}
+		});
 		
 		btnExit = createButton("Wyjœcie", 550);
 		btnExit.addActionListener(new ActionListener() {
