@@ -45,7 +45,8 @@ public class MainMenuPanel extends JPanel {
 		btnOptions = createButton("Ustawienia", 400);
 		btnOptions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				optionsDialog = new OptionsDialog(parent);
+				if(optionsDialog == null || !optionsDialog.isVisible())
+					optionsDialog = new OptionsDialog(parent);
 			}
 		});
 		
