@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,12 +15,16 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 public class OptionsDialog extends JDialog {
+	private static final long serialVersionUID = 1L;
+
 	private ButtonGroup btnGroup;
 	
 	private JLabel lblLookAndFeel;
 	private JRadioButton btnDefaultLookAndFeel;
 	private JRadioButton btnSystemLookAndFeel;
 	private JRadioButton btnNimbusLookAndFeel;
+	
+	private JButton btnApplySettings;
 	
 	public OptionsDialog(JFrame parent) {
 		super(parent);
@@ -84,11 +89,20 @@ public class OptionsDialog extends JDialog {
 				? btnNimbusLookAndFeel.getModel() : btnSystemLookAndFeel.getModel(), true 
 		);
 		
+		btnApplySettings = new JButton("OK");
+		btnApplySettings.setBounds(270, 110, 100, 30);
+		btnApplySettings.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		
 		this.add(lblLookAndFeel);
 		
 		this.add(btnDefaultLookAndFeel);
 		this.add(btnSystemLookAndFeel);
 		this.add(btnNimbusLookAndFeel);
+		this.add(btnApplySettings);
 		
 		this.setVisible(true);
 	}

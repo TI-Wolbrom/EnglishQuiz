@@ -15,7 +15,8 @@ import dev.projekt_v2.core.ApplicationFrame;
 import dev.projekt_v2.core.OptionsDialog;
 
 public class MainMenuPanel extends JPanel {
-
+	private static final long serialVersionUID = 1L;
+	
 	private ApplicationFrame parent;
 	private OptionsDialog optionsDialog;
 	
@@ -34,6 +35,12 @@ public class MainMenuPanel extends JPanel {
 	
 	public void create() {
 		btnStart = createButton("Rozpocznij Quiz!", 100);
+		btnStart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				parent.showQuiz();
+			}
+		});
+		
 		btnAuthors = createButton("Poka¿ Twórców", 250);
 		btnAuthors.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -13,7 +13,7 @@ public class Application {
 			if(lookAndFeel.equalsIgnoreCase("Nimbus")) {
 				for(LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 					if("Nimbus".equals(info.getName())) {
-						UIManager.setLookAndFeel(info.getClassName());
+						UIManager.setLookAndFeel(info.getClassName());					            
 						SwingUtilities.updateComponentTreeUI(appFrame);
 						break;
 					}
@@ -27,7 +27,7 @@ public class Application {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) {	
 		appFrame = new ApplicationFrame();
 		appFrame.init();
 		appFrame.setVisible(true);

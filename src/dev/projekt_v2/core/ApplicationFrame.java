@@ -6,10 +6,13 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 import dev.projekt_v2.panels.MainMenuPanel;
+import dev.projekt_v2.panels.QuizPanel;
 
 public class ApplicationFrame extends JFrame {
-
+	private static final long serialVersionUID = 1L;
+	
 	private MainMenuPanel mainMenu;
+	private QuizPanel quizPanel;
 	
 	public ApplicationFrame() {
 		this.setTitle("Quiz");
@@ -29,6 +32,19 @@ public class ApplicationFrame extends JFrame {
 		mainMenu.setVisible(true);
 		
 		this.add(mainMenu);
+	}
+	
+	public void showQuiz() {
+		if(quizPanel == null) {
+			quizPanel = new QuizPanel(getSize());
+			quizPanel.create();
+			
+			quizPanel.setVisible(true);	
+			mainMenu.setVisible(false);
+			
+			this.add(quizPanel);
+			this.remove(mainMenu);
+		}
 	}
 	
 	public void closeProgram() {
