@@ -19,6 +19,7 @@ public class ApplicationFrame extends JFrame {
 		this.setSize(1024, 768);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(null);
+		this.setResizable(false);
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
