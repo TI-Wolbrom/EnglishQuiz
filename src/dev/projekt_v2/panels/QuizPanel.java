@@ -129,7 +129,7 @@ public class QuizPanel extends JPanel {
 	public JToggleButton createAnswerButton(String str, int y) {
 		JToggleButton btn = new JToggleButton(str);
 		btn.setFont(transformFont(Font.PLAIN, 14));
-		btn.setBounds(20, y, 300, 50);
+		btn.setBounds(20, y, 385, 50);
 		btn.setHorizontalAlignment(SwingConstants.LEFT);
 				
 		btnAnswerGroup.add(btn);
