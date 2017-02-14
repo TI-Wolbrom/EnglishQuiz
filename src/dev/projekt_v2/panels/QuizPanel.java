@@ -1,5 +1,6 @@
 package dev.projekt_v2.panels;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -63,10 +64,13 @@ public class QuizPanel extends JPanel {
 		lblSelectAnswer.setFont(transformFont(Font.BOLD, 18));
 		
 		btnCheck = new JButton("Sprawdü");
-		btnCheck.setBounds(800, 300, 150, 50);
+		btnCheck.setBounds(800, 300, 200, 50);
 		btnCheck.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				answerSelected=101;
+				
 				if(btnAnswerA.isSelected())
 					answerSelected = 0;
 				else if(btnAnswerB.isSelected())
@@ -75,22 +79,35 @@ public class QuizPanel extends JPanel {
 					answerSelected = 2;
 				else if(btnAnswerD.isSelected())
 					answerSelected = 3;
-				else JOptionPane.showMessageDialog(null, "Wybierz jakπú odpowiedü ...", "Informacja", JOptionPane.OK_OPTION);
 				
-				if(question.isCorrectFrom(answerSelected)) {
+				
+				if(answerSelected == 101)
+					JOptionPane.showMessageDialog(null, "Wybierz jakπú odpowiedü ...", "Informacja", JOptionPane.OK_OPTION);
+				
+				else if(question.isCorrectFrom(answerSelected)) {
+					btnCheck.setBackground(Color.green);
+					btnCheck.setText("Odpowiedz poprawna!");
+					btnCheck.setEnabled(false);
 					System.out.println("Odpowiedz poprawna!");
 				} else {
+					btnCheck.setBackground(Color.red);
+					btnCheck.setText("Odpowiedü niepoprawna!");
+					btnCheck.setEnabled(false);
 					System.out.println("Odpowiedz niepoprawna!");
 				}
+
 			}
 		});
 		
 		btnNextQuestion = new JButton("NastÍpne");
-		btnNextQuestion.setBounds(800, 400, 150, 50);
-		btnNextQuestion.addActionListener(new ActionListener() {	
+		btnNextQuestion.setBounds(800, 400, 200, 50);
+		btnNextQuestion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				btnAnswerGroup.clearSelection();
+				btnCheck.setEnabled(true);
+				btnCheck.setBackground(getBackground());
+				btnCheck.setText("Sprawdü");
 				
 				question = QuestionManager.getRandomQuestion();
 				
@@ -129,7 +146,7 @@ public class QuizPanel extends JPanel {
 	public JToggleButton createAnswerButton(String str, int y) {
 		JToggleButton btn = new JToggleButton(str);
 		btn.setFont(transformFont(Font.PLAIN, 14));
-		btn.setBounds(20, y, 300, 50);
+		btn.setBounds(20, y, 385, 50);
 		btn.setHorizontalAlignment(SwingConstants.LEFT);
 				
 		btnAnswerGroup.add(btn);
