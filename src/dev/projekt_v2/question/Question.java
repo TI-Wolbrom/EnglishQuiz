@@ -19,8 +19,6 @@ public class Question {
 		setAnswerC(c);
 		setAnswerD(d);
 		
-		System.out.println("Hello World!");
-		
 		setAnswerCorrect(correct);
 	}
 	

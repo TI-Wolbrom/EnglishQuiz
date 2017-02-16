@@ -31,7 +31,7 @@ public final class QuestionManager {
 		questions.add(new Question("Jak powiemy komuœ, ¿e kochamy czekoladê?","I love chocolate","I love chocolade","I hate chocolade","chocolade is my love",0));
 		questions.add(new Question("S³owo \"Szef Kuchni\" w jêzyku angielskim ma postaæ:", "Thief", "Thef", "Chief", "Chef", 3));
 		questions.add(new Question("Czas Present Simple po polsku oznacza:", "Czas przysz³y prosty", "Czas przesz³y prosty", "Czas teraŸniejszy prosty", "Czas teraŸniejszy", 2));
-		questions.add(new Question("Holandia w jêzyku angielskim ma postaæ: ", "Netherlands, Holand", "Netherland, Holland", "Netherlands, Holland", "Netherlands, Herland", 1));
+		questions.add(new Question("Holandia w jêzyku angielskim ma postaæ: ", "Netherlands, Holand", "Netherland, Holland", "Netherlands, Holland", "Netherlands, Herland", 2));
 		questions.add(new Question("S³owo \"grumble\" w jêzyku angielskim oznacza?", "narzekaæ, burczeæ (w brzuchu)", "garb", "niezliczony", "g¹szcz, zaroœla", 0));
 		questions.add(new Question("S³owo \"discernible\" w jêzyku angielskim oznacza?", "zauwa¿alny, pragn¹æ", "zauwa¿alny", "pragn¹æ", "okaleczaæ", 1));
 		questions.add(new Question("S³owo \"tradermark\" w jêzyku angielskim oznacza?", "znak prosty", "znak zodiaku", "znak towarowy", "znak wodny", 2));
@@ -42,18 +42,6 @@ public final class QuestionManager {
 //		questions.add(new Question("","","","","",0));
 	}
 	
-	/*private static String randomString(int len) {
-		String chars = "qwertyuiopasdfghjklzxcvbnm";
-		char[] chars_ = chars.toCharArray();
-		
-		String str = new String();
-		
-		for(int i = 0; i < len; ++i)
-			str += chars_[new Random().nextInt(chars.length())];
-		
-		return str;
-	} */
-	
 	public static Question getRandomQuestion() {
 		return questions.get(new Random().nextInt(questions.size()));
 	}
@@ -61,8 +49,5 @@ public final class QuestionManager {
 	public static void clearQuestions() {
 		questions.clear();
 	}
-
-	public static void setQuestions(ArrayList<Question> questions) {
-		QuestionManager.questions = questions;
-	}
+	
 }

@@ -49,8 +49,7 @@ public class QuizPanel extends JPanel {
 	public QuizPanel(Dimension size) {
 		this.setSize(size);
 		this.setLayout(null);
-		
-		
+			
 		QuestionManager.createQuestions();
 		
 		question = QuestionManager.getRandomQuestion();
@@ -70,7 +69,7 @@ public class QuizPanel extends JPanel {
 							lblTimeLeft.setForeground(Color.RED);
 						else if(timeLeft > 31 &&!lblTimeLeft.getForeground().equals(Color.BLACK))
 							lblTimeLeft.setForeground(Color.BLACK);
-					}catch(Exception e){}
+					} catch(Exception e) { }
 					
 					if(timeLeft < 1){
 						btnAnswerA.setEnabled(false);
@@ -85,11 +84,10 @@ public class QuizPanel extends JPanel {
 			}});
 		
 		if(!thread.isAlive())
-		thread.start();
+			thread.start();
 	}
 	
 	public void create() {
-		
 		font = new Font("Arial", Font.BOLD, 20);
 		
 		lblQuestionDesc = new JLabel(question.getQuestion());
@@ -183,7 +181,6 @@ public class QuizPanel extends JPanel {
 		btnAnswerB = createAnswerButton("B) " + question.getAnswerB(), 400);
 		btnAnswerC = createAnswerButton("C) " + question.getAnswerC(), 500);
 		btnAnswerD = createAnswerButton("D) " + question.getAnswerD(), 600);
-		
 		
 		this.add(lblQuestionDesc);
 		this.add(lblQuestionNumber);
