@@ -42,6 +42,8 @@ public class QuizPanel extends JPanel {
 	private int questionNumber = 1;
 	private int timeLeft = 60; 							//	tymczasowe sta³e 60 sec
 	
+	private long timer;
+	
 	private Thread thread;
 	
 	public QuizPanel(Dimension size) {
@@ -55,8 +57,8 @@ public class QuizPanel extends JPanel {
 		
 		thread = new Thread(new Runnable() {
 			public void run() {
-				long timer = System.currentTimeMillis();
-				while(timeLeft > 0){
+				timer = System.currentTimeMillis();
+				while(timeLeft >= 0){
 					if(System.currentTimeMillis() - timer > 1000){
 						timer += 1000;
 						timeLeft--;
@@ -69,9 +71,17 @@ public class QuizPanel extends JPanel {
 						else if(timeLeft > 31 &&!lblTimeLeft.getForeground().equals(Color.BLACK))
 							lblTimeLeft.setForeground(Color.BLACK);
 					}catch(Exception e){}
+					
+					if(timeLeft < 1){
+						btnAnswerA.setEnabled(false);
+						btnAnswerB.setEnabled(false);
+						btnAnswerC.setEnabled(false);
+						btnAnswerD.setEnabled(false);
+						btnCheck.setEnabled(false);
+						thread.suspend();
+					}
 				}
 
-				thread.suspend();
 			}});
 		
 		if(!thread.isAlive())
@@ -117,10 +127,8 @@ public class QuizPanel extends JPanel {
 				
 				if(answerSelected != 101){
 					thread.suspend();
-					}
-
-				System.out.println(timeLeft);
-				
+					System.out.println(timeLeft);
+				}				
 				
 				if(answerSelected == 101)
 					JOptionPane.showMessageDialog(null, "Wybierz jak¹œ odpowiedŸ ...", "Informacja", JOptionPane.OK_OPTION);
@@ -145,20 +153,26 @@ public class QuizPanel extends JPanel {
 		btnNextQuestion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				timeLeft = 60;
+				timer = System.currentTimeMillis();
 				thread.resume();
 				
 				btnAnswerGroup.clearSelection();
+				if(!btnAnswerA.isEnabled()||!btnAnswerB.isEnabled()||!btnAnswerC.isEnabled()||!btnAnswerD.isEnabled()){
+					btnAnswerA.setEnabled(true);
+					btnAnswerB.setEnabled(true);
+					btnAnswerC.setEnabled(true);
+					btnAnswerD.setEnabled(true);
+				}
 				btnCheck.setEnabled(true);
 				btnCheck.setBackground(getBackground());
 				btnCheck.setText("SprawdŸ");
 				
 				question = QuestionManager.getRandomQuestion();
 				questionNumber++;
-				timeLeft = 60;
-				if(questionNumber > 32){
+				if(questionNumber > 32)
 					questionNumber = 1;
 					
-				}
 				update();
 			}
 		});
