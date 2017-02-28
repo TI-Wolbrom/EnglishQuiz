@@ -6,11 +6,13 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
@@ -20,7 +22,7 @@ import dev.projekt_v2.question.QuestionManager;
 public class QuizPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	private JLabel lblQuestionDesc;
+	private JTextArea txtQuestionDesc;
 	private JLabel lblQuestionNumber;
 	private JLabel lblSelectAnswer;
 	private JLabel lblTimeLeft;
@@ -90,9 +92,13 @@ public class QuizPanel extends JPanel {
 	public void create() {
 		font = new Font("Arial", Font.BOLD, 20);
 		
-		lblQuestionDesc = new JLabel(question.getQuestion());
-		lblQuestionDesc.setBounds(20, 20, 700, 64);
-		lblQuestionDesc.setFont(font);
+		txtQuestionDesc = new JTextArea(question.getQuestion());
+		txtQuestionDesc.setBounds(20, 20, 700, 100);
+		txtQuestionDesc.setEditable(false); // wy³¹czamy mo¿liwoœæ edytowania tekstu
+		txtQuestionDesc.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2)); // tworzymy obramowanie o kolorze czarnym i o gruboœci 2
+		txtQuestionDesc.setLineWrap(true); // w³¹czamy zawijanie tekstu
+		txtQuestionDesc.setWrapStyleWord(true);
+		txtQuestionDesc.setFont(font);
 		
 		lblTimeLeft = new JLabel("Pozosta³y czas: " + timeLeft);
 		lblTimeLeft.setBounds(851, 50, 160, 20);
@@ -176,13 +182,13 @@ public class QuizPanel extends JPanel {
 		});
 		
 		btnAnswerGroup = new ButtonGroup();
-		
+			
 		btnAnswerA = createAnswerButton("A) " + question.getAnswerA(), 300);
 		btnAnswerB = createAnswerButton("B) " + question.getAnswerB(), 400);
 		btnAnswerC = createAnswerButton("C) " + question.getAnswerC(), 500);
 		btnAnswerD = createAnswerButton("D) " + question.getAnswerD(), 600);
 		
-		this.add(lblQuestionDesc);
+		this.add(txtQuestionDesc);
 		this.add(lblQuestionNumber);
 		this.add(lblSelectAnswer);
 		this.add(lblTimeLeft);
@@ -192,7 +198,7 @@ public class QuizPanel extends JPanel {
 	}
 	
 	public void update() {
-		lblQuestionDesc.setText(question.getQuestion());
+		txtQuestionDesc.setText(question.getQuestion());
 		lblQuestionNumber.setText("Pytanie "+ questionNumber +" z 32");
 
 		btnAnswerA.setText("A) " + question.getAnswerA());

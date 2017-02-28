@@ -22,6 +22,40 @@ public class Question {
 		setAnswerCorrect(correct);
 	}
 	
+	public void mix(int newCorrect) {
+		String correct = getAnswerById(answerCorrect);
+		String mixed = getAnswerById(newCorrect);
+		
+		setAnswerById(newCorrect, correct);
+		setAnswerById(answerCorrect, mixed);
+		
+		setAnswerCorrect(newCorrect);
+	}
+	
+	public void setAnswerById(int id, String answer) {
+		if(id == 0)
+			setAnswerA(answer);
+		else if(id == 1)
+			setAnswerB(answer);
+		else if(id == 2)
+			setAnswerC(answer);
+		else
+			setAnswerD(answer);
+	}
+	
+	public String getAnswerById(int id) {
+		if(id == 0)
+			return answerA;
+		else if(id == 1)
+			return answerB;
+		else if(id == 2)
+			return answerC;
+		else if(id == 3)
+			return answerD;
+		
+		return null;
+	}
+	
 	public String getQuestion() {
 		return question;
 	}
