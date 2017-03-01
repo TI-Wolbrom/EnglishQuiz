@@ -16,12 +16,14 @@ import javax.swing.JTextArea;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
+import dev.projekt_v2.core.ApplicationFrame;
 import dev.projekt_v2.question.Question;
 import dev.projekt_v2.question.QuestionManager;
 
 public class QuizPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
-
+	private ApplicationFrame parent;
+	
 	private JTextArea txtQuestionDesc;
 	private JLabel lblQuestionNumber;
 	private JLabel lblSelectAnswer;
@@ -31,6 +33,7 @@ public class QuizPanel extends JPanel {
 	
 	private JButton btnCheck;
 	private JButton btnNextQuestion;
+	private JButton btnFinish;
 	
 	private ButtonGroup btnAnswerGroup;
 	
@@ -48,7 +51,8 @@ public class QuizPanel extends JPanel {
 	
 	private Thread thread;
 	
-	public QuizPanel(Dimension size) {
+	public QuizPanel(Dimension size, ApplicationFrame parent) {
+		this.parent = parent;
 		this.setSize(size);
 		this.setLayout(null);
 			
@@ -152,6 +156,22 @@ public class QuizPanel extends JPanel {
 			}
 		});
 		
+		btnFinish = new JButton("Zakoñcz");
+		btnFinish.setBounds(800, 400, 200, 50);
+		btnFinish.setVisible(false);
+		btnFinish.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					thread.join(1);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				parent.showFinish();
+			}
+		});
+		
 		btnNextQuestion = new JButton("Nastêpne");
 		btnNextQuestion.setBounds(800, 400, 200, 50);
 		btnNextQuestion.addActionListener(new ActionListener() {
@@ -168,14 +188,17 @@ public class QuizPanel extends JPanel {
 					btnAnswerC.setEnabled(true);
 					btnAnswerD.setEnabled(true);
 				}
+				
 				btnCheck.setEnabled(true);
 				btnCheck.setBackground(getBackground());
 				btnCheck.setText("SprawdŸ");
 				
 				question = QuestionManager.getRandomQuestion();
 				questionNumber++;
-				if(questionNumber > 32)
-					questionNumber = 1;
+				if(questionNumber > 31){
+				btnNextQuestion.setVisible(false);
+				btnFinish.setVisible(true);
+				}
 					
 				update();
 			}
@@ -192,7 +215,7 @@ public class QuizPanel extends JPanel {
 		this.add(lblQuestionNumber);
 		this.add(lblSelectAnswer);
 		this.add(lblTimeLeft);
-		
+		this.add(btnFinish);
 		this.add(btnCheck);
 		this.add(btnNextQuestion);
 	}

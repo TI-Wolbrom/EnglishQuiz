@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import dev.projekt_v2.panels.FinishPanel;
 import dev.projekt_v2.panels.MainMenuPanel;
 import dev.projekt_v2.panels.QuizPanel;
 
@@ -13,6 +14,7 @@ public class ApplicationFrame extends JFrame {
 	
 	private MainMenuPanel mainMenu;
 	private QuizPanel quizPanel;
+	private FinishPanel finishPanel;
 	
 	public ApplicationFrame() {
 		this.setTitle("Quiz");
@@ -37,7 +39,7 @@ public class ApplicationFrame extends JFrame {
 	
 	public void showQuiz() {
 		if(quizPanel == null) {
-			quizPanel = new QuizPanel(getSize());
+			quizPanel = new QuizPanel(getSize(),this);
 			quizPanel.create();
 			
 			quizPanel.setVisible(true);	
@@ -45,6 +47,19 @@ public class ApplicationFrame extends JFrame {
 			
 			this.add(quizPanel);
 			this.remove(mainMenu);
+		}
+	}
+	
+	public void showFinish() {
+		if(finishPanel == null) {
+			finishPanel = new FinishPanel(getSize());
+			finishPanel.create();
+			
+			finishPanel.setVisible(true);	
+			quizPanel.setVisible(false);
+			
+			this.add(finishPanel);
+			this.remove(quizPanel);
 		}
 	}
 	
