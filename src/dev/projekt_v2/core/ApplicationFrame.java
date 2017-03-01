@@ -34,12 +34,17 @@ public class ApplicationFrame extends JFrame {
 		
 		mainMenu.setVisible(true);
 		
+		if(finishPanel != null) {
+			finishPanel.setVisible(false);
+			this.remove(finishPanel);
+		}
+		
 		this.add(mainMenu);
 	}
 	
 	public void showQuiz() {
 		if(quizPanel == null) {
-			quizPanel = new QuizPanel(getSize(),this);
+			quizPanel = new QuizPanel(getSize(), this);
 			quizPanel.create();
 			
 			quizPanel.setVisible(true);	
@@ -52,7 +57,7 @@ public class ApplicationFrame extends JFrame {
 	
 	public void showFinish() {
 		if(finishPanel == null) {
-			finishPanel = new FinishPanel(getSize());
+			finishPanel = new FinishPanel(getSize(), this);
 			finishPanel.create();
 			
 			finishPanel.setVisible(true);	

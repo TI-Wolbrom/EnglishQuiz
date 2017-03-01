@@ -87,6 +87,12 @@ public class QuizPanel extends JPanel {
 					}
 				}
 
+				try {
+					thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
 			}});
 		
 		if(!thread.isAlive())
@@ -245,6 +251,14 @@ public class QuizPanel extends JPanel {
 		this.add(btn);
 		
 		return btn;
+	}
+	
+	public ApplicationFrame getParent() {
+		return parent;
+	}
+
+	public void setParent(ApplicationFrame parent) {
+		this.parent = parent;
 	}
 	
 }
