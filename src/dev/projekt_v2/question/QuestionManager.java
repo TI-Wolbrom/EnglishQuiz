@@ -36,7 +36,7 @@ public final class QuestionManager {
 		questions.add(new Question("Holandia w jêzyku angielskim ma postaæ: ", "Netherlands, Holand", "Netherland, Holland", "Netherlands, Holland", "Netherlands, Herland", 2));
 		questions.add(new Question("S³owo \"grumble\" w jêzyku angielskim oznacza?", "narzekaæ, burczeæ (w brzuchu)", "garb", "niezliczony", "g¹szcz, zaroœla", 0));
 		questions.add(new Question("S³owo \"discernible\" w jêzyku angielskim oznacza?", "zauwa¿alny, pragn¹æ", "zauwa¿alny", "pragn¹æ", "okaleczaæ", 1));
-		questions.add(new Question("S³owo \"tradermark\" w jêzyku angielskim oznacza?", "znak prosty", "znak zodiaku", "znak towarowy", "znak wodny", 2));
+		questions.add(new Question("S³owo \"trademark\" w jêzyku angielskim oznacza?", "znak prosty", "znak zodiaku", "znak towarowy", "znak wodny", 2));
 		questions.add(new Question("Wybierz prawid³ow¹ odpowiedŸ:\n\nWould you ... for a drink?", "try", "like", "care", "check", 2));
 		questions.add(new Question("Wybierz prawid³ow¹ odpowiedŸ:\n\nCould someone give me ... with the washing up?", "an aid", "a help", "a tip", "a hand", 3));
 		

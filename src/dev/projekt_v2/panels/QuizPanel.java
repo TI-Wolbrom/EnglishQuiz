@@ -1,7 +1,6 @@
 package dev.projekt_v2.panels;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,62 +43,25 @@ public class QuizPanel extends JPanel {
 	
 	private Question question;
 	private int answerSelected;
-	private int questionNumber = 1;
+	private int questionNumber = 29;
 	private int timeLeft = 60; 							//	tymczasowe sta³e 60 sec
 	
 	private long timer;
 	
 	private Thread thread;
 	
-	public QuizPanel(Dimension size, ApplicationFrame parent) {
+	public QuizPanel(ApplicationFrame parent) {
 		this.parent = parent;
-		this.setSize(size);
-		this.setLayout(null);
-			
+		
+		setSize(parent.getSize());
+		setLayout(null);
+	}
+	
+	public void create() {
 		QuestionManager.createQuestions();
 		
 		question = QuestionManager.getRandomQuestion();
 		
-		thread = new Thread(new Runnable() {
-			public void run() {
-				timer = System.currentTimeMillis();
-				while(timeLeft >= 0){
-					if(System.currentTimeMillis() - timer > 1000){
-						timer += 1000;
-						timeLeft--;
-					}
-					try{
-						lblTimeLeft.setText("Pozosta³y czas: " +timeLeft);
-						
-						if(timeLeft < 31 && !lblTimeLeft.getForeground().equals(Color.RED))
-							lblTimeLeft.setForeground(Color.RED);
-						else if(timeLeft > 31 &&!lblTimeLeft.getForeground().equals(Color.BLACK))
-							lblTimeLeft.setForeground(Color.BLACK);
-					} catch(Exception e) { }
-					
-					if(timeLeft < 1){
-						btnAnswerA.setEnabled(false);
-						btnAnswerB.setEnabled(false);
-						btnAnswerC.setEnabled(false);
-						btnAnswerD.setEnabled(false);
-						btnCheck.setEnabled(false);
-						thread.suspend();
-					}
-				}
-
-				try {
-					thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				
-			}});
-		
-		if(!thread.isAlive())
-			thread.start();
-	}
-	
-	public void create() {
 		font = new Font("Arial", Font.BOLD, 20);
 		
 		txtQuestionDesc = new JTextArea(question.getQuestion());
@@ -127,8 +89,7 @@ public class QuizPanel extends JPanel {
 		btnCheck.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				answerSelected=101;
+				answerSelected = 101;
 				
 				if(btnAnswerA.isSelected())
 					answerSelected = 0;
@@ -142,7 +103,10 @@ public class QuizPanel extends JPanel {
 				if(answerSelected != 101){
 					thread.suspend();
 					System.out.println(timeLeft);
-				}				
+				}
+				
+				if(questionNumber == 32)
+					btnFinish.setEnabled(true);
 				
 				if(answerSelected == 101)
 					JOptionPane.showMessageDialog(null, "Wybierz jak¹œ odpowiedŸ ...", "Informacja", JOptionPane.OK_OPTION);
@@ -151,27 +115,27 @@ public class QuizPanel extends JPanel {
 					btnCheck.setBackground(Color.green);
 					btnCheck.setText("Odpowiedz poprawna!");
 					btnCheck.setEnabled(false);
-					System.out.println("Odpowiedz poprawna!");
+					btnNextQuestion.setEnabled(true);
 				} else {
 					btnCheck.setBackground(Color.red);
 					btnCheck.setText("OdpowiedŸ niepoprawna!");
 					btnCheck.setEnabled(false);
-					System.out.println("Odpowiedz niepoprawna!");
+					btnNextQuestion.setEnabled(true);
 				}
-
+			
 			}
 		});
 		
 		btnFinish = new JButton("Zakoñcz");
 		btnFinish.setBounds(800, 400, 200, 50);
 		btnFinish.setVisible(false);
+		btnFinish.setEnabled(false);
 		btnFinish.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
 					thread.join(1);
 				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				parent.showFinish();
@@ -180,33 +144,38 @@ public class QuizPanel extends JPanel {
 		
 		btnNextQuestion = new JButton("Nastêpne");
 		btnNextQuestion.setBounds(800, 400, 200, 50);
+		btnNextQuestion.setEnabled(false);
 		btnNextQuestion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				timeLeft = 60;
-				timer = System.currentTimeMillis();
-				thread.resume();
-				
-				btnAnswerGroup.clearSelection();
-				if(!btnAnswerA.isEnabled()||!btnAnswerB.isEnabled()||!btnAnswerC.isEnabled()||!btnAnswerD.isEnabled()){
-					btnAnswerA.setEnabled(true);
-					btnAnswerB.setEnabled(true);
-					btnAnswerC.setEnabled(true);
-					btnAnswerD.setEnabled(true);
-				}
-				
-				btnCheck.setEnabled(true);
-				btnCheck.setBackground(getBackground());
-				btnCheck.setText("SprawdŸ");
-				
-				question = QuestionManager.getRandomQuestion();
-				questionNumber++;
-				if(questionNumber > 31){
-				btnNextQuestion.setVisible(false);
-				btnFinish.setVisible(true);
-				}
+				if(answerSelected <= 3) {	
+					timeLeft = 60;
+					timer = System.currentTimeMillis();
+					thread.resume();
 					
-				update();
+					btnAnswerGroup.clearSelection();
+					if(!btnAnswerA.isEnabled()||!btnAnswerB.isEnabled()||!btnAnswerC.isEnabled()||!btnAnswerD.isEnabled()){
+						btnAnswerA.setEnabled(true);
+						btnAnswerB.setEnabled(true);
+						btnAnswerC.setEnabled(true);
+						btnAnswerD.setEnabled(true);
+					}
+					
+					btnCheck.setEnabled(true);
+					btnCheck.setBackground(getBackground());
+					btnCheck.setText("SprawdŸ");
+					
+					question = QuestionManager.getRandomQuestion();
+					questionNumber++;
+					if(questionNumber > 31){
+						btnNextQuestion.setVisible(false);
+						btnFinish.setVisible(true);
+					}
+						
+					update();
+				} else {
+					JOptionPane.showMessageDialog(null, "Wybierz jak¹œ odpowiedŸ ...", "Informacja", JOptionPane.OK_OPTION);
+				}
 			}
 		});
 		
@@ -216,7 +185,7 @@ public class QuizPanel extends JPanel {
 		btnAnswerB = createAnswerButton("B) " + question.getAnswerB(), 400);
 		btnAnswerC = createAnswerButton("C) " + question.getAnswerC(), 500);
 		btnAnswerD = createAnswerButton("D) " + question.getAnswerD(), 600);
-		
+				
 		this.add(txtQuestionDesc);
 		this.add(lblQuestionNumber);
 		this.add(lblSelectAnswer);
@@ -224,6 +193,39 @@ public class QuizPanel extends JPanel {
 		this.add(btnFinish);
 		this.add(btnCheck);
 		this.add(btnNextQuestion);
+	}
+	
+	public void createThreads() {
+		thread = new Thread(new Runnable() {
+			public void run() {
+				timer = System.currentTimeMillis();
+				while(timeLeft >= 0) {
+					if(System.currentTimeMillis() - timer > 1000){
+						timer += 1000;
+						timeLeft--;
+					}
+					try {
+						lblTimeLeft.setText("Pozosta³y czas: " +timeLeft);
+							
+						if(timeLeft < 31 && !lblTimeLeft.getForeground().equals(Color.RED))
+							lblTimeLeft.setForeground(Color.RED);
+						else if(timeLeft > 31 &&!lblTimeLeft.getForeground().equals(Color.BLACK))
+							lblTimeLeft.setForeground(Color.BLACK);
+					} catch(Exception e) { }
+						
+					if(timeLeft < 1){
+						btnAnswerA.setEnabled(false);
+						btnAnswerB.setEnabled(false);
+						btnAnswerC.setEnabled(false);
+						btnAnswerD.setEnabled(false);
+						btnCheck.setEnabled(false);
+						thread.suspend();
+					}
+				}
+			}
+		});
+		
+		thread.start();
 	}
 	
 	public void update() {
@@ -234,6 +236,8 @@ public class QuizPanel extends JPanel {
 		btnAnswerB.setText("B) " + question.getAnswerB());
 		btnAnswerC.setText("C) " + question.getAnswerC());
 		btnAnswerD.setText("D) " + question.getAnswerD());
+		
+		btnNextQuestion.setEnabled(false);
 	}
 	
 	private Font transformFont(int style, int size) {
@@ -245,20 +249,11 @@ public class QuizPanel extends JPanel {
 		btn.setFont(transformFont(Font.PLAIN, 14));
 		btn.setBounds(20, y, 385, 50);
 		btn.setHorizontalAlignment(SwingConstants.LEFT);
-				
+		
 		btnAnswerGroup.add(btn);
 		
 		this.add(btn);
 		
 		return btn;
 	}
-	
-	public ApplicationFrame getParent() {
-		return parent;
-	}
-
-	public void setParent(ApplicationFrame parent) {
-		this.parent = parent;
-	}
-	
 }

@@ -10,6 +10,7 @@ import dev.projekt_v2.panels.MainMenuPanel;
 import dev.projekt_v2.panels.QuizPanel;
 
 public class ApplicationFrame extends JFrame {
+	
 	private static final long serialVersionUID = 1L;
 	
 	private MainMenuPanel mainMenu;
@@ -20,7 +21,6 @@ public class ApplicationFrame extends JFrame {
 		this.setTitle("Quiz");
 		this.setSize(1024, 768);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setLayout(null);
 		this.setResizable(false);
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -37,6 +37,8 @@ public class ApplicationFrame extends JFrame {
 		if(finishPanel != null) {
 			finishPanel.setVisible(false);
 			this.remove(finishPanel);
+			
+			finishPanel = null;
 		}
 		
 		this.add(mainMenu);
@@ -44,20 +46,23 @@ public class ApplicationFrame extends JFrame {
 	
 	public void showQuiz() {
 		if(quizPanel == null) {
-			quizPanel = new QuizPanel(getSize(), this);
+			quizPanel = new QuizPanel(this);
 			quizPanel.create();
+			quizPanel.createThreads();
 			
 			quizPanel.setVisible(true);	
 			mainMenu.setVisible(false);
 			
 			this.add(quizPanel);
 			this.remove(mainMenu);
+			
+			mainMenu = null;
 		}
 	}
 	
 	public void showFinish() {
 		if(finishPanel == null) {
-			finishPanel = new FinishPanel(getSize(), this);
+			finishPanel = new FinishPanel(this);
 			finishPanel.create();
 			
 			finishPanel.setVisible(true);	
@@ -65,11 +70,17 @@ public class ApplicationFrame extends JFrame {
 			
 			this.add(finishPanel);
 			this.remove(quizPanel);
+			
+			quizPanel = null;
 		}
 	}
 	
 	public void closeProgram() {
 		this.dispose();
+		
+		// Hardkorowe zamykanie procesu
+		// Mamy pewnoœæ, ¿e zadne watki nie prze¿yj¹ po wywo³aniu tej metody
+		System.exit(0);
 	}
 	
 }
