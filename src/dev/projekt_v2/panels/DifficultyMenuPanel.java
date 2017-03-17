@@ -1,9 +1,11 @@
 package dev.projekt_v2.panels;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import dev.projekt_v2.core.ApplicationFrame;
@@ -16,6 +18,8 @@ public class DifficultyMenuPanel extends JPanel{
 	
 	private int timeForQuiz;
 	private int difficultyLevel;
+	
+	private JLabel lblSelectDiff;
 	
 	private JButton btnEasy;
 	private JButton btnMedium;
@@ -30,6 +34,11 @@ public class DifficultyMenuPanel extends JPanel{
 	}
 	
 	public void create() {
+		
+		lblSelectDiff = new JLabel("Prosimy o wybranie poziomu trudnoœci:");
+		lblSelectDiff.setBounds(350, 130, 400, 50);
+		lblSelectDiff.setFont(new Font(lblSelectDiff.getFont().getFontName(), Font.BOLD, 16));
+		
 		btnEasy = new JButton("£atwy");
 		btnEasy.setBounds(400, 210, 200, 50);
 		
@@ -43,7 +52,7 @@ public class DifficultyMenuPanel extends JPanel{
 			}
 		});
 		
-		btnMedium = new JButton("œredni");
+		btnMedium = new JButton("Œredni");
 		btnMedium.setBounds(400, 310, 200, 50);
 		
 		btnMedium.addActionListener(new ActionListener() {
@@ -80,6 +89,8 @@ public class DifficultyMenuPanel extends JPanel{
 			}
 		});
 
+		this.add(lblSelectDiff);
+		
 		this.add(btnEasy);
 		this.add(btnMedium);
 		this.add(btnHard);
@@ -101,7 +112,5 @@ public class DifficultyMenuPanel extends JPanel{
 	public void setDifficultyLevel(int difficultyLevel) {
 		this.difficultyLevel = difficultyLevel;
 	}
-	
-	
 	
 }

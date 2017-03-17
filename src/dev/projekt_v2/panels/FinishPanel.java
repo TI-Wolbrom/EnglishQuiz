@@ -76,7 +76,6 @@ public class FinishPanel extends JPanel{
 		txtAreaSummary.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 		txtAreaSummary.setVisible(true);
 		
-		
 		btnExit = new JButton("Wyjdü z programu");
 		btnExit.setBounds(800, 670, 200, 50);
 
