@@ -68,7 +68,7 @@ public class ApplicationFrame extends JFrame {
 	
 	public void showQuiz() {
 		if(quizPanel == null) {
-			quizPanel = new QuizPanel(this, difficultyMenuPanel.getTimeForQuiz());
+			quizPanel = new QuizPanel(this, difficultyMenuPanel.getTimeForQuiz(), difficultyMenuPanel.getDifficultyLevel());
 			quizPanel.create();
 			quizPanel.createThreads();
 			
@@ -84,7 +84,7 @@ public class ApplicationFrame extends JFrame {
 	
 	public void showFinish() {
 		if(finishPanel == null) {
-			finishPanel = new FinishPanel(this);
+			finishPanel = new FinishPanel(this, quizPanel.getScore(), quizPanel.getCorrectAnswers(), quizPanel.getWrongAnswers());
 			finishPanel.create();
 			
 			finishPanel.setVisible(true);	

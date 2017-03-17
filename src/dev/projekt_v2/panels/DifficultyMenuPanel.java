@@ -15,7 +15,8 @@ public class DifficultyMenuPanel extends JPanel{
 	private ApplicationFrame parent;
 	
 	private int timeForQuiz;
-
+	private int difficultyLevel;
+	
 	private JButton btnEasy;
 	private JButton btnMedium;
 	private JButton btnHard;
@@ -37,6 +38,7 @@ public class DifficultyMenuPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// Wczytujemy quiz o trudnoœci easy
 				setTimeForQuiz(60);
+				setDifficultyLevel(1);
 				parent.showQuiz();
 			}
 		});
@@ -49,6 +51,7 @@ public class DifficultyMenuPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// Wczytujemy quiz o trudnoœci medium
 				setTimeForQuiz(30);
+				setDifficultyLevel(3);
 				parent.showQuiz();
 			}
 		});
@@ -61,6 +64,7 @@ public class DifficultyMenuPanel extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// Wczytujemy quiz o trudnoœci hard
 				setTimeForQuiz(15);
+				setDifficultyLevel(10);
 				parent.showQuiz();
 			}
 		});
@@ -89,6 +93,15 @@ public class DifficultyMenuPanel extends JPanel{
 	public void setTimeForQuiz(int timeForQuiz) {
 		this.timeForQuiz = timeForQuiz;
 	}
+
+	public int getDifficultyLevel() {
+		return difficultyLevel;
+	}
+
+	public void setDifficultyLevel(int difficultyLevel) {
+		this.difficultyLevel = difficultyLevel;
+	}
+	
 	
 	
 }

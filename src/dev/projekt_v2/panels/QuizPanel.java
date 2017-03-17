@@ -40,10 +40,16 @@ public class QuizPanel extends JPanel {
 	private JToggleButton btnAnswerB;
 	private JToggleButton btnAnswerC;
 	private JToggleButton btnAnswerD;
+
+	private int correctAnswers;
+	private int wrongAnswers;
+	private int score;
+	private int comboPoints = 1;
+	private int difficultyLevel; // 1 - easy;  3 - medium;  10 - hard;
 	
 	private Question question;
 	private int answerSelected;
-	private int questionNumber = 29;
+	private int questionNumber = 1;
 	private int timeLeft; 	
 	private final int baseTime; 							
 	
@@ -51,12 +57,13 @@ public class QuizPanel extends JPanel {
 	
 	private Thread thread;
 	
-	public QuizPanel(ApplicationFrame parent, int timeLeft) {
+	public QuizPanel(ApplicationFrame parent, int timeLeft, int difficultyLevel) {
 		this.parent = parent;
 		setSize(parent.getSize());
 		setLayout(null);
 		this.timeLeft = timeLeft;
 		this.baseTime = timeLeft;
+		this.difficultyLevel = difficultyLevel;
 	}
 	
 	public void create() {
@@ -114,11 +121,17 @@ public class QuizPanel extends JPanel {
 					JOptionPane.showMessageDialog(null, "Wybierz jakπú odpowiedü ...", "Informacja", JOptionPane.OK_OPTION);
 				
 				else if(question.isCorrectFrom(answerSelected)) {
+					correctAnswers++;
+					score += timeLeft * difficultyLevel * comboPoints;
+					if(comboPoints < 5)
+						comboPoints++;
 					btnCheck.setBackground(Color.green);
 					btnCheck.setText("Odpowiedz poprawna!");
 					btnCheck.setEnabled(false);
 					btnNextQuestion.setEnabled(true);
 				} else {
+					wrongAnswers++;
+					comboPoints = 1;
 					btnCheck.setBackground(Color.red);
 					btnCheck.setText("Odpowiedü niepoprawna!");
 					btnCheck.setEnabled(false);
@@ -258,4 +271,17 @@ public class QuizPanel extends JPanel {
 		
 		return btn;
 	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public int getCorrectAnswers() {
+		return correctAnswers;
+	}
+
+	public int getWrongAnswers() {
+		return wrongAnswers;
+	}
+	
 }
