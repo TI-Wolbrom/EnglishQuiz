@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
+import dev.projekt_v2.panels.DifficultyMenuPanel;
 import dev.projekt_v2.panels.FinishPanel;
 import dev.projekt_v2.panels.MainMenuPanel;
 import dev.projekt_v2.panels.QuizPanel;
@@ -12,10 +13,11 @@ import dev.projekt_v2.panels.QuizPanel;
 public class ApplicationFrame extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
-	
+
 	private MainMenuPanel mainMenu;
 	private QuizPanel quizPanel;
 	private FinishPanel finishPanel;
+	private DifficultyMenuPanel difficultyMenuPanel;
 	
 	public ApplicationFrame() {
 		this.setTitle("Quiz");
@@ -39,24 +41,44 @@ public class ApplicationFrame extends JFrame {
 			this.remove(finishPanel);
 			
 			finishPanel = null;
+		}else if(difficultyMenuPanel != null){
+			difficultyMenuPanel.setVisible(false);
+			this.remove(difficultyMenuPanel);
+			
+			difficultyMenuPanel = null;
 		}
 		
 		this.add(mainMenu);
 	}
 	
+	public void showDifficultyMenu() {
+		if(difficultyMenuPanel == null) {
+			difficultyMenuPanel = new DifficultyMenuPanel(this);
+			difficultyMenuPanel.create();
+			
+			difficultyMenuPanel.setVisible(true);	
+			mainMenu.setVisible(false);
+			
+			this.add(difficultyMenuPanel);
+			this.remove(mainMenu);
+			
+			mainMenu = null;
+		}
+	}
+	
 	public void showQuiz() {
 		if(quizPanel == null) {
-			quizPanel = new QuizPanel(this);
+			quizPanel = new QuizPanel(this, difficultyMenuPanel.getTimeForQuiz());
 			quizPanel.create();
 			quizPanel.createThreads();
 			
 			quizPanel.setVisible(true);	
-			mainMenu.setVisible(false);
+			difficultyMenuPanel.setVisible(false);
 			
 			this.add(quizPanel);
-			this.remove(mainMenu);
+			this.remove(difficultyMenuPanel);
 			
-			mainMenu = null;
+			difficultyMenuPanel = null;
 		}
 	}
 	

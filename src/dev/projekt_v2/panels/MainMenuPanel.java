@@ -37,7 +37,7 @@ public class MainMenuPanel extends JPanel {
 		btnStart = createButton("Rozpocznij Quiz!", 100);
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				parent.showQuiz();
+				parent.showDifficultyMenu();
 			}
 		});
 		

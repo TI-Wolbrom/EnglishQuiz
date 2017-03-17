@@ -44,17 +44,19 @@ public class QuizPanel extends JPanel {
 	private Question question;
 	private int answerSelected;
 	private int questionNumber = 29;
-	private int timeLeft = 60; 							//	tymczasowe sta³e 60 sec
+	private int timeLeft; 	
+	private final int baseTime; 							
 	
 	private long timer;
 	
 	private Thread thread;
 	
-	public QuizPanel(ApplicationFrame parent) {
+	public QuizPanel(ApplicationFrame parent, int timeLeft) {
 		this.parent = parent;
-		
 		setSize(parent.getSize());
 		setLayout(null);
+		this.timeLeft = timeLeft;
+		this.baseTime = timeLeft;
 	}
 	
 	public void create() {
@@ -149,7 +151,7 @@ public class QuizPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(answerSelected <= 3) {	
-					timeLeft = 60;
+					timeLeft = baseTime;
 					timer = System.currentTimeMillis();
 					thread.resume();
 					
