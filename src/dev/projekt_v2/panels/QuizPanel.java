@@ -67,9 +67,9 @@ public class QuizPanel extends JPanel {
 	}
 	
 	public void create() {
-		QuestionManager.createQuestions();
+		QuestionManager.selectRandomQuestions(32);	
 		
-		question = QuestionManager.getRandomQuestion();
+		question = QuestionManager.selectQuestion(questionNumber);
 		
 		font = new Font("Arial", Font.BOLD, 20);
 		
@@ -180,8 +180,8 @@ public class QuizPanel extends JPanel {
 					btnCheck.setBackground(getBackground());
 					btnCheck.setText("SprawdŸ");
 					
-					question = QuestionManager.getRandomQuestion();
 					questionNumber++;
+					question = QuestionManager.selectQuestion(questionNumber);
 					if(questionNumber > 31){
 						btnNextQuestion.setVisible(false);
 						btnFinish.setVisible(true);

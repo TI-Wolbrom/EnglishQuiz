@@ -4,6 +4,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
+import dev.projekt_v2.question.QuestionManager;
+
 public class Application {
 
 	private static ApplicationFrame appFrame;
@@ -27,7 +29,10 @@ public class Application {
 		}
 	}
 	
-	public static void main(String[] args) {	
+	public static void main(String[] args) {
+		// Tworzymy pytania przy starcie programu
+		QuestionManager.createQuestions();
+		
 		appFrame = new ApplicationFrame();
 		appFrame.init();
 		appFrame.setVisible(true);

@@ -5,9 +5,16 @@ import java.util.Random;
 
 public final class QuestionManager {
 
+	// Baza pytan
 	private static ArrayList<Question> questions = new ArrayList<>();
-
+	
+	// Wybrane pytania do quizu
+	private static ArrayList<Question> questionsSelected = new ArrayList<>();
+	
 	public static void createQuestions() {	
+		if(!questions.isEmpty())
+			questions.clear();
+			
 		// Je¿eli w pytaniu chcemy przejœæ do nastêpnej linii u¿ywamy "\n"
 		
 		questions.add(new Question("Je¿eli chcielibyœmy zapisaæ liczbê 99 po angielsku otrzymalibyœmy ?", "nine ninety", "ten thousand", "ninety nine", "fifteen five", 2));
@@ -52,16 +59,38 @@ public final class QuestionManager {
 //		questions.add(new Question("","","","","",0));
 	}
 	
-	public static Question getRandomQuestion() {
-		Question q = questions.get(new Random().nextInt(questions.size()));
+	public static void selectRandomQuestions(int count) {
+		Random rand = new Random();
 		
-		q.mix(new Random().nextInt(4));
+		ArrayList<Integer> selects = new ArrayList<>();
 		
-		return q;
+		questionsSelected.clear();
+		
+		for(int i = 0; i < count; ++i) {
+			int idx = rand.nextInt(questions.size());
+			
+			if(questionsSelected.isEmpty()) {
+				Question q = questions.get(idx);
+				q.mix(rand.nextInt(4));
+				
+				questionsSelected.add(q);
+				selects.add(idx);
+			}
+			else {
+				while(selects.contains(idx)) {
+					idx = rand.nextInt(questions.size());
+				}
+				
+				Question q = questions.get(idx);
+				q.mix(rand.nextInt(4));
+				
+				questionsSelected.add(q);
+				selects.add(idx);
+			}
+		}
 	}
 	
-	public static void clearQuestions() {
-		questions.clear();
+	public static Question selectQuestion(int id) {
+		return questionsSelected.get(id - 1);
 	}
-	
 }
