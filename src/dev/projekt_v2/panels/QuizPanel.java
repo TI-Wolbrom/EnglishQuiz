@@ -49,6 +49,7 @@ public class QuizPanel extends JPanel {
 	
 	private Question question;
 	private int answerSelected;
+	private int correctAnswer;
 	private int questionNumber = 1;
 	private int timeLeft; 	
 	private final int baseTime; 							
@@ -109,10 +110,8 @@ public class QuizPanel extends JPanel {
 				else if(btnAnswerD.isSelected())
 					answerSelected = 3;
 				
-				if(answerSelected != 101){
+				if(answerSelected != 101)
 					thread.suspend();
-					System.out.println(timeLeft);
-				}
 				
 				if(questionNumber == 32)
 					btnFinish.setEnabled(true);
@@ -121,6 +120,7 @@ public class QuizPanel extends JPanel {
 					JOptionPane.showMessageDialog(null, "Wybierz jakπú odpowiedü ...", "Informacja", JOptionPane.OK_OPTION);
 				
 				else if(question.isCorrectFrom(answerSelected)) {
+					setAnswersEnabled(false);
 					correctAnswers++;
 					score += timeLeft * difficultyLevel * comboPoints;
 					if(comboPoints < 5)
@@ -130,6 +130,7 @@ public class QuizPanel extends JPanel {
 					btnCheck.setEnabled(false);
 					btnNextQuestion.setEnabled(true);
 				} else {
+					setAnswersEnabled(false);
 					wrongAnswers++;
 					comboPoints = 1;
 					btnCheck.setBackground(Color.red);
@@ -137,7 +138,9 @@ public class QuizPanel extends JPanel {
 					btnCheck.setEnabled(false);
 					btnNextQuestion.setEnabled(true);
 				}
-			
+				
+				if(answerSelected != 101)
+					colorAnswers();
 			}
 		});
 		
@@ -169,12 +172,13 @@ public class QuizPanel extends JPanel {
 					thread.resume();
 					
 					btnAnswerGroup.clearSelection();
-					if(!btnAnswerA.isEnabled()||!btnAnswerB.isEnabled()||!btnAnswerC.isEnabled()||!btnAnswerD.isEnabled()){
-						btnAnswerA.setEnabled(true);
-						btnAnswerB.setEnabled(true);
-						btnAnswerC.setEnabled(true);
-						btnAnswerD.setEnabled(true);
-					}
+					if(!btnAnswerA.isEnabled()||!btnAnswerB.isEnabled()||!btnAnswerC.isEnabled()||!btnAnswerD.isEnabled())
+						setAnswersEnabled(true);
+					
+					btnAnswerA.setBackground(null);
+					btnAnswerB.setBackground(null);
+					btnAnswerC.setBackground(null);
+					btnAnswerD.setBackground(null);
 					
 					btnCheck.setEnabled(true);
 					btnCheck.setBackground(getBackground());
@@ -188,9 +192,8 @@ public class QuizPanel extends JPanel {
 					}
 						
 					update();
-				} else {
+				} else 
 					JOptionPane.showMessageDialog(null, "Wybierz jakπú odpowiedü ...", "Informacja", JOptionPane.OK_OPTION);
-				}
 			}
 		});
 		
@@ -229,11 +232,12 @@ public class QuizPanel extends JPanel {
 					} catch(Exception e) { }
 						
 					if(timeLeft < 1){
-						btnAnswerA.setEnabled(false);
-						btnAnswerB.setEnabled(false);
-						btnAnswerC.setEnabled(false);
-						btnAnswerD.setEnabled(false);
+						setAnswersEnabled(false);
+						colorAnswers();
+						btnAnswerGroup.clearSelection();
 						btnCheck.setEnabled(false);
+						btnNextQuestion.setEnabled(true);
+						btnFinish.setEnabled(true);
 						thread.suspend();
 					}
 				}
@@ -274,6 +278,39 @@ public class QuizPanel extends JPanel {
 
 	public int getScore() {
 		return score;
+	}
+	
+	private void setAnswersEnabled(boolean setEnabled){
+		btnAnswerA.setEnabled(setEnabled);
+		btnAnswerB.setEnabled(setEnabled);
+		btnAnswerC.setEnabled(setEnabled);
+		btnAnswerD.setEnabled(setEnabled);
+	}
+	
+	private void colorAnswers(){
+		correctAnswer = question.getAnswerCorrect();
+		btnAnswerGroup.clearSelection();
+		if(correctAnswer == 0){
+			btnAnswerA.setBackground(Color.green);
+			btnAnswerB.setBackground(Color.red);
+			btnAnswerC.setBackground(Color.red);
+			btnAnswerD.setBackground(Color.red);
+		}else if(correctAnswer == 1){
+			btnAnswerA.setBackground(Color.red);
+			btnAnswerB.setBackground(Color.green);
+			btnAnswerC.setBackground(Color.red);
+			btnAnswerD.setBackground(Color.red);
+		}else if(correctAnswer == 2){
+			btnAnswerA.setBackground(Color.red);
+			btnAnswerB.setBackground(Color.red);
+			btnAnswerC.setBackground(Color.green);
+			btnAnswerD.setBackground(Color.red);
+		}else if(correctAnswer == 3){
+			btnAnswerA.setBackground(Color.red);
+			btnAnswerB.setBackground(Color.red);
+			btnAnswerC.setBackground(Color.red);
+			btnAnswerD.setBackground(Color.green);
+		}
 	}
 
 	public int getCorrectAnswers() {
