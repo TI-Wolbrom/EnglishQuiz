@@ -22,6 +22,7 @@ public final class QuestionManager {
 		questions.add(new Question("Jak nazywa siê w jêzyku angielskim telefon marki jab³ko?", "Apfel", "Melon", "Pinneapple", "Apple", 3));
 		questions.add(new Question("Jak po angielsku pisze siê s³owo policjanci?","policeman","policemen","policemans","policemens",1));
 		questions.add(new Question("Co oznacza s³owo cat?","Szatan","kat","jaszczurka","kot",3));
+		questions.add(new Question("Co oznacza s³owo clumsy?", "niezdarny", "œmia³y", "miêkki", "szybki", 0));
 		questions.add(new Question("Co po polsku oznacza s³owo chairman?","cz³owiek krzes³o","szef","przewodnicz¹cy","pracodawca",2));
 		questions.add(new Question("Zdanie: To drink alcohol you must be atleast 18 years old. oznacza?","By pic alkochol musisz mieæ minimum 18 lat","By pic alkochol musisz mieæ ponad 18 lat","By pic alkochol mo¿esz mieæ minimum 18 lat","By pic alkochol nie musisz mieæ minimum 18 lat",0));
 		questions.add(new Question("Jak odczytujemy datê 1912?","ninety twenty two","nineteen twenteen","nineteen tvelwe","nineteen twelve",1));
@@ -30,6 +31,7 @@ public final class QuestionManager {
 		questions.add(new Question("W jêzyku angielskim 5=2+3 mo¿emy zapisaæ w postaci?", "five equals two plus three", "five equinox two plus three", "five equals two equals plus three", "five equals three", 0));
 		questions.add(new Question("W jêzyku angielskim 8/2=2*2 mo¿emy zapisaæ w postaci?", "eight divided by two equals two multiply by two", "eight diffed by two equals two factor two", "eight equals two divided by four", "eight factored by two equals two summary two", 0));
 		questions.add(new Question("Wynik dzia³ania: four + two - one, jest równy?","3","4","5","6",2));
+		questions.add(new Question("Wynik dzia³ania: twelve + eleven + one / eight, jest równy?", "5", "8", "4", "12", 2));
 		questions.add(new Question("Wyra¿enie: Money on the wallet, oznacza?","Pieni¹dze na portfelu","Pieni¹dze w portfelu","Pieni¹dze pod portfelem","Pieni¹dze przed portfelem",0));
 		questions.add(new Question("S³owo if oznacza?","dlaczego","kiedy","je¿eli","albo",2));
 		questions.add(new Question("Je¿eli pójdziemy do zoo szukaj¹c s³oni, powinniœmy szukaæ tabliczki z napisem:","elephants","tigers","snakes","big animal",0));
@@ -40,19 +42,22 @@ public final class QuestionManager {
 		questions.add(new Question("Jak zapytamy o drogê na pocztê?","How can i go to the post house?","How can i go to the post hause?","How can i look for post office?","How can i go to the post office?",3));
 		questions.add(new Question("Jak zapytamy kogoœ o jego wiek?","How old is you?","How much old are you","How old are you?","How old am I?",2));
 		questions.add(new Question("Jak powiemy komuœ, ¿e kochamy czekoladê?","I love chocolate","I love chocolade","I hate chocolade","chocolade is my love",0));
-		questions.add(new Question("S³owo \"Szef Kuchni\" w jêzyku angielskim ma postaæ:", "Thief", "Thef", "Chief", "Chef", 3));
+		questions.add(new Question("Jak powiemy komuœ, ¿e urodziliœmy siê w Polsce?", "I live in Poland", "I hate Poland", "I born in Poland", "I love Poland", 2));
 		questions.add(new Question("Czas Present Simple po polsku oznacza?", "Czas przysz³y prosty", "Czas przesz³y prosty", "Czas teraŸniejszy prosty", "Czas teraŸniejszy", 2));
 		questions.add(new Question("Czas Past Simple po polsku oznacza?", "Czas przysz³y", "Czas przesz³y", "Czas teraŸniejszy", "Czas przysz³y prosty", 1));
 		questions.add(new Question("Czas Present Perfect po polsku oznacza?", "Czas przesz³y", "Czas teraŸniejszy", "Czas przesz³y prosty", "Czas przysz³y", 3));
 		questions.add(new Question("Holandia w jêzyku angielskim ma postaæ: ", "Netherlands, Holand", "Netherland, Holland", "Netherlands, Holland", "Netherlands, Herland", 2));
+		questions.add(new Question("S³owo \"Szef Kuchni\" w jêzyku angielskim ma postaæ:", "Thief", "Thef", "Chief", "Chef", 3));
 		questions.add(new Question("S³owo \"grumble\" w jêzyku angielskim oznacza?", "narzekaæ, burczeæ (w brzuchu)", "garb", "niezliczony", "g¹szcz, zaroœla", 0));
 		questions.add(new Question("S³owo \"discernible\" w jêzyku angielskim oznacza?", "zauwa¿alny, pragn¹æ", "zauwa¿alny", "pragn¹æ", "okaleczaæ", 1));
 		questions.add(new Question("S³owo \"trademark\" w jêzyku angielskim oznacza?", "znak prosty", "znak zodiaku", "znak towarowy", "znak wodny", 2));
 		questions.add(new Question("S³owo \"mediterranean\" w jêzyku angielskim oznacza?", "Morze Œródziemne", "Medykamenty", "Medyk", "Uznanie", 0));
 		questions.add(new Question("S³owo \"shabby\" w jêzyku angielskim oznacza?", "zapadlisko", "niespokojny", "okaza³y", "przepyszny", 3));
 		questions.add(new Question("S³owo \"partitions\" w jêzyku angielskim oznacza?", "pozycje", "rozbiory", "pochodzenie", "obszycie", 1));
+		questions.add(new Question("S³owo \"Sound Card\" oznacza?", "karta dŸwiêkowa", "karta graficzna", "karta kredytowa", "karta usb", 0));
+		questions.add(new Question("S³owo \"Integrated peripherals\" oznacza?", "zintegrowane urz¹dzenie wyjœcia", "zintegrowane urz¹dzenie wejœcia", "zintegrowane urz¹dzenia peryferyjne", "urz¹dzenie wejœcia", 2));
 		questions.add(new Question("Wybierz prawid³ow¹ odpowiedŸ:\n\nWould you ... for a drink?", "try", "like", "care", "check", 2));
-		questions.add(new Question("Wybierz prawid³ow¹ odpowiedŸ:\n\nCould someone give me ... with the washing up?", "an aid", "a help", "a tip", "a hand", 3));
+		questions.add(new Question("Wybierz prawid³ow¹ odpowiedŸ:\n\nCould someone give me ... with the washing up?", "an aid", "a help", "a tip", "a hand", 3));		
 		
 //		questions.add(new Question("","","","","",0));
 //		questions.add(new Question("","","","","",0));

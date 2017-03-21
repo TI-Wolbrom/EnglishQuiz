@@ -96,6 +96,7 @@ public class QuizPanel extends JPanel {
 		
 		btnCheck = new JButton("Sprawdü");
 		btnCheck.setBounds(800, 300, 200, 50);
+		btnCheck.setOpaque(true);
 		btnCheck.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -268,6 +269,7 @@ public class QuizPanel extends JPanel {
 		btn.setFont(transformFont(Font.PLAIN, 14));
 		btn.setBounds(20, y, 385, 50);
 		btn.setHorizontalAlignment(SwingConstants.LEFT);
+		btn.setOpaque(true);
 		
 		btnAnswerGroup.add(btn);
 		
