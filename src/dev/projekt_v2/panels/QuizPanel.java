@@ -2,6 +2,7 @@ package dev.projekt_v2.panels;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,6 +17,8 @@ import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
 import dev.projekt_v2.core.ApplicationFrame;
+import dev.projekt_v2.core.ApplicationOptions;
+import dev.projekt_v2.core.ImageStorage;
 import dev.projekt_v2.question.Question;
 import dev.projekt_v2.question.QuestionManager;
 
@@ -85,18 +88,20 @@ public class QuizPanel extends JPanel {
 		lblTimeLeft = new JLabel("Pozosta³y czas: " + timeLeft);
 		lblTimeLeft.setBounds(851, 50, 160, 20);
 		lblTimeLeft.setFont(transformFont(Font.PLAIN, 16));
+		lblTimeLeft.setForeground(Color.white);
 		
 		lblQuestionNumber = new JLabel("Pytanie "+ questionNumber +" z 32");
 		lblQuestionNumber.setBounds(890, 20, 120, 20);
 		lblQuestionNumber.setFont(transformFont(Font.PLAIN, 16));
+		lblQuestionNumber.setForeground(Color.GREEN);
 		
 		lblSelectAnswer = new JLabel("Proszê o wybranie prawid³owej odpowiedzi:");
 		lblSelectAnswer.setBounds(20, 225, 500, 64);
 		lblSelectAnswer.setFont(transformFont(Font.BOLD, 18));
+		lblSelectAnswer.setForeground(Color.white);
 		
 		btnCheck = new JButton("SprawdŸ");
 		btnCheck.setBounds(800, 300, 200, 50);
-		btnCheck.setOpaque(true);
 		btnCheck.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -229,7 +234,7 @@ public class QuizPanel extends JPanel {
 						if(timeLeft < 31 && !lblTimeLeft.getForeground().equals(Color.RED))
 							lblTimeLeft.setForeground(Color.RED);
 						else if(timeLeft > 31 &&!lblTimeLeft.getForeground().equals(Color.BLACK))
-							lblTimeLeft.setForeground(Color.BLACK);
+							lblTimeLeft.setForeground(Color.white);
 					} catch(Exception e) { }
 						
 					if(timeLeft < 1){
@@ -252,6 +257,13 @@ public class QuizPanel extends JPanel {
 		txtQuestionDesc.setText(question.getQuestion());
 		lblQuestionNumber.setText("Pytanie "+ questionNumber +" z 32");
 
+		// Jest to wymagane na nimbusie
+		btnCheck.setOpaque(false);
+		btnAnswerA.setOpaque(false);
+		btnAnswerB.setOpaque(false);
+		btnAnswerC.setOpaque(false);
+		btnAnswerD.setOpaque(false);
+		
 		btnAnswerA.setText("A) " + question.getAnswerA());
 		btnAnswerB.setText("B) " + question.getAnswerB());
 		btnAnswerC.setText("C) " + question.getAnswerC());
@@ -269,7 +281,6 @@ public class QuizPanel extends JPanel {
 		btn.setFont(transformFont(Font.PLAIN, 14));
 		btn.setBounds(20, y, 385, 50);
 		btn.setHorizontalAlignment(SwingConstants.LEFT);
-		btn.setOpaque(true);
 		
 		btnAnswerGroup.add(btn);
 		
@@ -292,6 +303,14 @@ public class QuizPanel extends JPanel {
 	private void colorAnswers(){
 		correctAnswer = question.getAnswerCorrect();
 		btnAnswerGroup.clearSelection();
+		
+		// Jest to wymagane na nimbusie
+		btnCheck.setOpaque(true);
+		btnAnswerA.setOpaque(true);
+		btnAnswerB.setOpaque(true);
+		btnAnswerC.setOpaque(true);
+		btnAnswerD.setOpaque(true);
+		
 		if(correctAnswer == 0){
 			btnAnswerA.setBackground(Color.green);
 			btnAnswerB.setBackground(Color.red);
@@ -321,6 +340,13 @@ public class QuizPanel extends JPanel {
 
 	public int getWrongAnswers() {
 		return wrongAnswers;
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		
+		g.drawImage(ImageStorage.getImage(ApplicationOptions.IN_USE_LOOK_AND_FEEL), 0, 0, null);
 	}
 	
 }

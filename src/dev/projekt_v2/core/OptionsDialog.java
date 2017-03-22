@@ -21,7 +21,6 @@ public class OptionsDialog extends JDialog {
 	
 	private JLabel lblLookAndFeel;
 	private JRadioButton btnDefaultLookAndFeel;
-	private JRadioButton btnSystemLookAndFeel;
 	private JRadioButton btnNimbusLookAndFeel;
 	
 	private JButton btnApplySettings;
@@ -43,7 +42,7 @@ public class OptionsDialog extends JDialog {
 		btnGroup = new ButtonGroup();
 		
 		btnDefaultLookAndFeel = new JRadioButton("Domyœlny \"Look and Feel\"");
-		btnDefaultLookAndFeel.setBounds(30, 30, 250, 30);
+		btnDefaultLookAndFeel.setBounds(30, 40, 250, 30);
 		btnDefaultLookAndFeel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Application.applyLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
@@ -54,20 +53,8 @@ public class OptionsDialog extends JDialog {
 			}
 		});
 		
-		btnSystemLookAndFeel = new JRadioButton("Systemowy \"Look and Feel\"");
-		btnSystemLookAndFeel.setBounds(30, 55, 250, 30);
-		btnSystemLookAndFeel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Application.applyLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			
-				SwingUtilities.updateComponentTreeUI(getContentPane());
-				
-				ApplicationOptions.IN_USE_LOOK_AND_FEEL = ApplicationOptions.USE_DEFAULT_OS;
-			}
-		});
-		
 		btnNimbusLookAndFeel = new JRadioButton("Nimbus \"Look and Feel\"");
-		btnNimbusLookAndFeel.setBounds(30, 80, 250, 30);
+		btnNimbusLookAndFeel.setBounds(30, 75, 250, 30);
 		btnNimbusLookAndFeel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Application.applyLookAndFeel("Nimbus");
@@ -79,15 +66,12 @@ public class OptionsDialog extends JDialog {
 		});
 		
 		btnGroup.add(btnDefaultLookAndFeel);
-		btnGroup.add(btnSystemLookAndFeel);
 		btnGroup.add(btnNimbusLookAndFeel);
 		
-		btnGroup.setSelected
-		( 
-				ApplicationOptions.IN_USE_LOOK_AND_FEEL == ApplicationOptions.USE_DEFAULT 
-				? btnDefaultLookAndFeel.getModel() : ApplicationOptions.IN_USE_LOOK_AND_FEEL == ApplicationOptions.USE_NIMBUS 
-				? btnNimbusLookAndFeel.getModel() : btnSystemLookAndFeel.getModel(), true 
-		);
+		if(ApplicationOptions.IN_USE_LOOK_AND_FEEL == ApplicationOptions.USE_DEFAULT)
+			btnGroup.setSelected(btnDefaultLookAndFeel.getModel(), true);
+		else
+			btnGroup.setSelected(btnNimbusLookAndFeel.getModel(), true);
 		
 		btnApplySettings = new JButton("OK");
 		btnApplySettings.setBounds(270, 110, 100, 30);
@@ -100,7 +84,6 @@ public class OptionsDialog extends JDialog {
 		this.add(lblLookAndFeel);
 		
 		this.add(btnDefaultLookAndFeel);
-		this.add(btnSystemLookAndFeel);
 		this.add(btnNimbusLookAndFeel);
 		this.add(btnApplySettings);
 		

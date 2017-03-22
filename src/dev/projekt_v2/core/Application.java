@@ -1,5 +1,7 @@
 package dev.projekt_v2.core;
 
+import java.io.IOException;
+
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -30,12 +32,19 @@ public class Application {
 	}
 	
 	public static void main(String[] args) {
-		// Tworzymy pytania przy starcie programu
-		QuestionManager.createQuestions();
-		
-		appFrame = new ApplicationFrame();
-		appFrame.init();
-		appFrame.setVisible(true);
+		try {
+			// Wczytujemy zdjecia przy starcie programu
+			ImageStorage.loadImages();
+			
+			// Tworzymy pytania przy starcie programu
+			QuestionManager.createQuestions();
+			
+			appFrame = new ApplicationFrame();
+			appFrame.init();
+			appFrame.setVisible(true);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
