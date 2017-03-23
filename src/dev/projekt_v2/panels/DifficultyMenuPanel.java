@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import dev.projekt_v2.core.ApplicationFrame;
 import dev.projekt_v2.core.ApplicationOptions;
-import dev.projekt_v2.core.ImageStorage;
+import dev.projekt_v2.gfx.ImageStorage;
 
 public class DifficultyMenuPanel extends JPanel{
 

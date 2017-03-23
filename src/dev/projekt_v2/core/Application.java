@@ -6,7 +6,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
-import dev.projekt_v2.gfx.Textures;
+import dev.projekt_v2.gfx.ImageStorage;
 import dev.projekt_v2.question.QuestionManager;
 
 public class Application {
@@ -39,8 +39,6 @@ public class Application {
 			
 			// Tworzymy pytania przy starcie programu
 			QuestionManager.createQuestions();
-			
-			Textures.init();
 			
 			appFrame = new ApplicationFrame();
 			appFrame.init();

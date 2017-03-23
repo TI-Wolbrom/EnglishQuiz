@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 
 import dev.projekt_v2.core.ApplicationFrame;
 import dev.projekt_v2.core.ApplicationOptions;
-import dev.projekt_v2.core.ImageStorage;
+import dev.projekt_v2.gfx.ImageStorage;
 import dev.projekt_v2.question.Question;
 import dev.projekt_v2.question.QuestionManager;
 
