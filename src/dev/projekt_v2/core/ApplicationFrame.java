@@ -20,7 +20,7 @@ public class ApplicationFrame extends JFrame {
 	private DifficultyMenuPanel difficultyMenuPanel;
 	
 	public ApplicationFrame() {
-		this.setTitle("Quiz");
+		this.setTitle("Quiz  @  2TI ZSWolbrom");
 		this.setSize(1024, 768);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);

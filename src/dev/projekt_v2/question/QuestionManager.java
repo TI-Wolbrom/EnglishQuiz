@@ -43,7 +43,7 @@ public final class QuestionManager {
 		questions.add(new Question("W języku angielskim 5=2+3 możemy zapisać w postaci?", "five equals two plus three", "five equinox two plus three", "five equals two equals plus three", "five equals three", 0));
 		questions.add(new Question("W języku angielskim 8/2=2*2 możemy zapisać w postaci?", "eight divided by two equals two multiply by two", "eight diffed by two equals two factor two", "eight equals two divided by four", "eight factored by two equals two summary two", 0));
 		questions.add(new Question("Wynik działania: four + two - one, jest równy?","3","4","5","6",2));
-		questions.add(new Question("Wynik działania: twelve + eleven + one / eight, jest równy?", "5", "8", "4", "12", 2));
+		questions.add(new Question("Wynik działania: (twelve + eleven + one) / eight, jest równy?", "5", "8", "3", "12", 2)); // 12 + 11 + 1 / 8 to nie jest 4 ;p tylko 23 i 1/8
 		questions.add(new Question("Wyrażenie: Money on the wallet, oznacza?","Pieniądze na portfelu","Pieniądze w portfelu","Pieniądze pod portfelem","Pieniądze przed portfelem",0));
 		questions.add(new Question("Jeżeli pójdziemy do zoo szukając słoni, powinniśmy szukać tabliczki z napisem:","elephants","tigers","snakes","big animal",0));
 		questions.add(new Question("Który spośród wymienionych przedmiotów nie pasuje w kuchni?","knife","spoon","fork","saw",3));
@@ -92,7 +92,7 @@ public final class QuestionManager {
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nCan i get to our school ... car from here?","with","throught","by","on",2));
 		questions.add(new Question("Odpowiedz na pytanie:\n\nHow many good answers are below this question? ","three","two","one","four",2));
 		questions.add(new Question("Przetłumacz:\n\nI really like apples, pears and chocolate", "Bardzo lubię jabłka, gruszki i czekoladę", "Bardzo lubię jabłka, perły i czekoladę", "Bardzo lubię jabłka, perły i warzywa", "Bardzo lubię jabłka, słodycze i warzywa", 0));
-		questions.add(new Question("Przetłumacz:\n\nI hate arrogant people but I also understand shy people.", "Nienawidzę aroganckich ludzi, ale też rozumiem dobrych ludzi", "Nienawidzę aroganckich ludzi, ale też rozumiem nieśmiałych ludzi", "Nienawidzę złych ludzi", "Zdanie jest niepoprawne.", 1));
+		questions.add(new Question("Przetłumacz:\n\nI hate arrogant people", "Nienawidzę nieśmiałych ludzi", "Nienawidzę aroganckich ludzi", "Nienawidzę złych ludzi", "Zdanie jest niepoprawne.", 1)); // ucięte bo sie nie miescily odpowiedzi
 		questions.add(new Question("Przetłumacz:\n\nI hate chocolade", "Nienawidzę czekolady", "Nienawidzę słodyczy", "Nienawidzę owoców", "Zdanie jest niepoprawne", 3));
 		questions.add(new Question("Przetłumacz:\n\nI love chocolate", "Kocham czekoladę", "Kocham słodycze", "Kocham owoce", "Zdanie jest niepoprawne", 0));
 		questions.add(new Question("Przetłumacz:\n\nI am tired of waiting!", "Jestem wkurzony czekaniem!", "Jestem zmęczony czekaniem!", "Jestem wyczerpany czekaniem!", "Zdanie jest niepoprawne!", 1));
