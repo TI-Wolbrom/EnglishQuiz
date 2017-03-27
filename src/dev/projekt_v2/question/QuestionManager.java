@@ -42,6 +42,10 @@ public final class QuestionManager {
 		questions.add(new Question("W języku angielskim 5/3 możemy zapisać w postaci?","five times three","five equinoxes of three","five thirds","three fifths",2));
 		questions.add(new Question("W języku angielskim 5=2+3 możemy zapisać w postaci?", "five equals two plus three", "five equinox two plus three", "five equals two equals plus three", "five equals three", 0));
 		questions.add(new Question("W języku angielskim 8/2=2*2 możemy zapisać w postaci?", "eight divided by two equals two multiply by two", "eight diffed by two equals two factor two", "eight equals two divided by four", "eight factored by two equals two summary two", 0));
+		questions.add(new Question("W języku angielskim słowo \"silence\" oznacza?","cisza","głośny","hałaśliwy","spokojny",0));
+		questions.add(new Question("W języku angielskim słowo \"dull\" oznacza?","zły","entuzjastyczny","bezczelny","nieciekawy",3));
+		questions.add(new Question("W języku angielskim słowo \"hammer\" oznacza?","nożyczki","piła","poziomica","młotek",3));
+		questions.add(new Question("W języku angielskim słowo \"anvil\" oznacza?","obcęgi","kowadło","kombinerki","młotek",1));
 		questions.add(new Question("Wynik działania: four + two - one, jest równy?","3","4","5","6",2));
 		questions.add(new Question("Wynik działania: (twelve + eleven + one) / eight, jest równy?", "5", "8", "3", "12", 2)); // 12 + 11 + 1 / 8 to nie jest 4 ;p tylko 23 i 1/8
 		questions.add(new Question("Wyrażenie: Money on the wallet, oznacza?","Pieniądze na portfelu","Pieniądze w portfelu","Pieniądze pod portfelem","Pieniądze przed portfelem",0));
@@ -77,6 +81,13 @@ public final class QuestionManager {
 		questions.add(new Question("Słowo \"multiply\" w języku angielskim oznacza?","rozdzielać","powiększać","mnożyć","dzielić",2));
 		questions.add(new Question("Słowo \"Sound Card\" oznacza?", "karta dźwiękowa", "karta graficzna", "karta kredytowa", "karta usb", 0));
 		questions.add(new Question("Słowo \"if\" oznacza?","dlaczego","kiedy","jeżeli","albo",2));
+		questions.add(new Question("Słowo \"coach\" w języku angielskim oznacza?","komik","trener","kierowca","konsultant",1));
+		questions.add(new Question("Słowo \"analyst\" w języku angielskim oznacza?","aktor","strażak","analityk","policjant",2));
+		questions.add(new Question("Słowo \"chef\" w języku angielskim oznacza?","piekarz","prezes","szef kuchni","przedsiębiorca",2));
+		questions.add(new Question("Słowo \"actress\" języku angielskim oznacza?","aktor","księgowy","analityk","aktorka",3));
+		questions.add(new Question("Słowo \"businesswoman\" w języku angielskim oznacza?","biznesmenka","przedsiębiorca","szef","doradca zawodowy",0));
+		questions.add(new Question("Słowo \"archery\" w języku angielskim oznacza?","bejsbol","boks","kolarstwo","łucznictwo",3));
+		questions.add(new Question("Słowo \"bricklayer\" języku angielskim oznacza?","budowniczy","murarz","barman","pracownik fizyczny",1));
 		questions.add(new Question("Słowo \"Integrated peripherals\" oznacza?", "zintegrowane urządzenie wyjścia", "zintegrowane urządzenie wejścia", "zintegrowane urządzenia peryferyjne", "urządzenie wejścia", 2));
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nWould you ... for a drink?", "try", "like", "care", "check", 2));
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nDo you live here? Yes, I ...", "am", "do", "does", "want", 1));
@@ -98,6 +109,15 @@ public final class QuestionManager {
 		questions.add(new Question("Przetłumacz:\n\nI am tired of waiting!", "Jestem wkurzony czekaniem!", "Jestem zmęczony czekaniem!", "Jestem wyczerpany czekaniem!", "Zdanie jest niepoprawne!", 1));
 		questions.add(new Question("Przetłumacz:\n\nI am exhausted!", "Jestem wkurzony!", "Jestem zmęczony!", "Jestem wyczerpany!", "Zdanie jest niepoprawne!", 2));
 		questions.add(new Question("Przetłumacz:\n\nI really miss you!", "Naprawdę tesknię za tobą", "Naprawdę cię kocham", "Naprawdę czekam na ciebie!", "Nie trafiłem na ciebie!", 0));
+		questions.add(new Question("W języku angielskim słowo \"scarf\" oznacza?","podkoszulek","szalik","buty","rękawiczki",1));
+		questions.add(new Question("Co oznacza słowo book?","książka","zeszyt","ołówek","długopis",0));
+		questions.add(new Question("\"Piekarnia\" w języku angielskim to?","supermarket","greengrocer's","baker's","butcher's",2));
+		questions.add(new Question("\"Prawnik\" w języku angielskim to?","journalist","judge","investigator","lawyer",3));
+		questions.add(new Question("\"błoto\" w języku angielskim to?","wood","dirt","mud","brick",2));
+		questions.add(new Question("\"Kino\" w języku angielskim to?","cinema","theatre","theme park","post office",0));
+		questions.add(new Question("\"Doradca zawodowy\" w języku angielskim to?","carpenter","artist","careers adviser","bailiff",2));
+		questions.add(new Question("\"Księgowy\" w języku angielskim to?","carpenter","barber","analyst","accountant",3));
+		questions.add(new Question("\"Księgarnia\" w języku angielskim to?","newsagent's","bookshop","toy shop","bookstore",2));
 		
 //		questions.add(new Question("","","","","",0));
 //		questions.add(new Question("","","","","",0));
