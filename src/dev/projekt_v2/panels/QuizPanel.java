@@ -240,6 +240,7 @@ public class QuizPanel extends JPanel {
 					if(timeLeft < 1){
 						setAnswersEnabled(false);
 						colorAnswers();
+						comboPoints = 0;
 						btnAnswerGroup.clearSelection();
 						btnCheck.setEnabled(false);
 						btnNextQuestion.setEnabled(true);

@@ -59,7 +59,7 @@ public final class QuestionManager {
 		questions.add(new Question("Jak powiemy komuś, że urodziliśmy się w Polsce?", "I live in Poland", "I hate Poland", "I born in Poland", "I love Poland", 2));
 		questions.add(new Question("Jak powiemy komuś, że nienawidzę słodyczy?", "I hate sweets", "I hatred sweetnes", "I hate candy", "I am candy", 0));
 		questions.add(new Question("Czas Present Simple po polsku oznacza?", "Czas przyszły prosty", "Czas przeszły prosty", "Czas teraźniejszy prosty", "Czas teraźniejszy", 2));
-		questions.add(new Question("Czas Past Simple po polsku oznacza?", "Czas przyszły", "Czas przeszły", "Czas teraźniejszy", "Czas przyszły prosty", 1));
+		questions.add(new Question("Czas Past Simple po polsku oznacza?", "Czas przyszły", "Czas przeszły prosty", "Czas teraźniejszy", "Czas przyszły prosty", 1));
 		questions.add(new Question("Czas Present Perfect po polsku oznacza?", "Czas przeszły", "Czas teraźniejszy", "Czas przeszły prosty", "Czas obecny doskonały", 3));
 		questions.add(new Question("Czas Future Simple po polsku oznacza?", "Czas obecny doskonały", "Czas teraźniejszy", "Czas przyszły prosty", "Czas przeszły", 2));
 		questions.add(new Question("Holandia w języku angielskim ma postać: ", "Netherlands, Holand", "Netherland, Holland", "Netherlands, Holland", "Netherlands, Herland", 2));
@@ -82,7 +82,7 @@ public final class QuestionManager {
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nDo you live here? Yes, I ...", "am", "do", "does", "want", 1));
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nShe ... him because he's boring", "doesn't like", "does like", "don't like", "try like", 0));
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nI ... like Art.", "doesn't", "am not", "don't", "pear", 2));
-		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\n... lives ... a flat.", "He, on", "I, on", "He, in", "He, at", 0));
+		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\n... lives ... a flat.", "He, on", "I, on", "He, in", "He, at", 2));
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nWhere ... your grandparents live.","is","are","do","does",2));
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nWhat ... your favourite color.","be","were","are","is",3));
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nMy father is ... Actor.","the","a","an","en",2));
