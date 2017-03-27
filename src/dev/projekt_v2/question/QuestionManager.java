@@ -63,7 +63,7 @@ public final class QuestionManager {
 		questions.add(new Question("Czas Present Perfect po polsku oznacza?", "Czas przeszły", "Czas teraźniejszy", "Czas przeszły prosty", "Czas obecny doskonały", 3));
 		questions.add(new Question("Czas Future Simple po polsku oznacza?", "Czas obecny doskonały", "Czas teraźniejszy", "Czas przyszły prosty", "Czas przeszły", 2));
 		questions.add(new Question("Holandia w języku angielskim ma postać: ", "Netherlands, Holand", "Netherland, Holland", "Netherlands, Holland", "Netherlands, Herland", 2));
-		questions.add(new Question("Szwecja w języku angielskim ma postać: ", "Vatican", "Sweden", "Switzerland", "Switzland", 2));
+		questions.add(new Question("Szwecja w języku angielskim ma postać: ", "Vatican", "Sweden", "Switzerland", "Switzland", 1));
 		questions.add(new Question("Słowo \"Szef Kuchni\" w języku angielskim ma postać:", "Thief", "Thef", "Chief", "Chef", 3));
 		questions.add(new Question("Słowo \"grumble\" w języku angielskim oznacza?", "narzekać, burczeć (w brzuchu)", "garb", "niezliczony", "gąszcz, zarośla", 0));
 		questions.add(new Question("Słowo \"discernible\" w języku angielskim oznacza?", "zauważalny, pragnąć", "zauważalny", "pragnąć", "okaleczać", 1));
@@ -87,8 +87,8 @@ public final class QuestionManager {
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nWhat ... your favourite color.","be","were","are","is",3));
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nMy father is ... Actor.","the","a","an","en",2));
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nMy mother is ... Doctor.","the","a","an","en",1));
-		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\n... Mississippi River is the chief river of the largest drainage system on the North American continent.","A","En","The","An",1));
-		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nWhat's the waether ... today?","like","look","seems","looks",0));
+		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\n... Mississippi River is the chief river of the largest drainage system on the North American continent.","A","En","The","An",2));
+		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nWhat's the weather ... today?","like","look","seems","looks",0));
 		questions.add(new Question("Wybierz prawidłową odpowiedź:\n\nCan i get to our school ... car from here?","with","throught","by","on",2));
 		questions.add(new Question("Odpowiedz na pytanie:\n\nHow many good answers are below this question? ","three","two","one","four",2));
 		questions.add(new Question("Przetłumacz:\n\nI really like apples, pears and chocolate", "Bardzo lubię jabłka, gruszki i czekoladę", "Bardzo lubię jabłka, perły i czekoladę", "Bardzo lubię jabłka, perły i warzywa", "Bardzo lubię jabłka, słodycze i warzywa", 0));
