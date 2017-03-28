@@ -72,7 +72,7 @@ public class MainMenuPanel extends JPanel {
 		txtAreaAuthors.setTabSize(2);
 		txtAreaAuthors.setLineWrap(true);
 		txtAreaAuthors.setText("\tQuiz zosta³ stworzony przez:\n\n\t• Patryk Tyliba\n\t• Dominik Karoñ\n\t• S³awomir Kwieciñski"
-				+ "\n\n\tPraca nad programem trwa³a niespe³na 2 miesi¹ce, rozpoczêta \nzosta³a 2017.02.13, a zakoñczona 2017.03.26.\n\n\t"
+				+ "\n\n\tPraca nad programem trwa³a niespe³na 2 miesi¹ce, rozpoczêta \nzosta³a 2017.02.13, a zakoñczona 2017.03.27.\n\n\t"
 				+ "G³ownym celem naszego quizu jest sprawdzenie, oraz mo¿liwoœæ \npoprawy znajomoœci jêzyka angielskiego.\n\n\n\n ¯yczymy powodzenia i jak najlepszych wyników w naszym quizie!!!");
 		txtAreaAuthors.setBounds(370, 100, 550, 500);
 		txtAreaAuthors.setEditable(false);
